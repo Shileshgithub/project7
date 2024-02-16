@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="container" style="padding-top: 10px;">
                  <h3>Update User</h3>
                  <hr>
-                 <form method="post" name="createUser" action="<?php echo base_url().'index.php/user/edit/'.$user['user_id'];?>" >
+                 <form method="post" name="createUser" action="<?php echo base_url().'index.php/Crudcontroller/edit/'.$user['id'];?>" >
                  <div class="row">
 
                     <div class = "col-md-6" >
@@ -35,28 +35,52 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <?php echo form_error('email')?>
                       </div>
                       <div class="col-md-6 col-lg-6 mb-3">
-                        <label>Gender</label>
+                        <label>Gender</label>  
                         <div class="form-group">
-                        <input type="radio" name="gender" value="Male">Male
-                        <input type="radio" name="gender" value="Female">Female
+                        <input type="radio" name="gender" value="Male" <?php if(!empty($user['gender']) && $user['gender'] == 'Male'){echo"checked";}?>>Male
+                        <input type="radio" name="gender" value="Female"<?php if(!empty($user['gender']) && $user['gender'] == 'Female'){echo"checked";}?>>Female
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-6 mb-3">
-                        <label>Hobby</label>
+                    
+                    <label>Hobby</label>  
+                        <label class="checkbox-inline">
+                      <?php   $daa = json_decode($user['hobby_h']);?>
+
+                            <input type="checkbox" name="hobby_h[]" value="cricket" <?php
+                                                    if (!empty($user) && in_array("cricket", $daa)){
+                                                        echo "checked";
+                                                    }
+                                                    ?> >cricket
+
+                            <input type="checkbox" name="hobby_h[]" value="hockey" <?php
+                                                    if (!empty($user) && in_array("hockey", $daa)){
+                                                        echo "checked";
+                                                    }
+                                                    ?>  />hockey
+                            
+                            </label>
+                       <div class="col-md-6 col-lg-6 mb-3">
+                       
                         <div class="form-group">
-                        <input type="checkbox" name="hobby" value="cricket">cricket
-                        <input type="checkbox" name="hobby" value=" hockey">Hockey
-                        </div>
-                    <div class="col-md-6 col-lg-6 mb-3">
                         <label>City</label>
-                        <div class="form-group">
-                        <input type="radio" name="city" value="jabalpur">Jabalpur
-                        <input type="radio" name="city" value="indore">Indore
+                        <input type="radio" name="city" value="jabalpur" <?php if(!empty($user['city']) && $user['city'] == 'jabalpur'){echo"checked";}?> >Jabalpur
+                        <input type="radio" name="city" value="indore" <?php if(!empty($user['city']) && $user['city'] == 'indore'){echo"checked";}?> >Indore
                         </div>
+                        <div class="col-md-6 col-lg-6 mb-3">  
+                        <select id="country" name="country" class="form-select inline">
+                            <option value="">Select country</option>
+                            <option value="">select</option>
+                            <option value="Ajaigarh" <?php if(!empty($user['country']) && $user['country'] == 'Ajaigarh'){echo"selected";}?>>Ajaigarh</option>
+                            <option value="Akodia" <?php if(!empty($user['country']) && $user['country'] == 'Akodia'){echo"selected";}?>>Akodia</option>
+                            <option value="Alampur" <?php if(!empty($user['country']) && $user['country'] == 'Alampur'){echo"selected";}?>>Alampur</option>
+                            <option value="Alirajpur" <?php if(!empty($user['country']) && $user['country'] == 'Alirajpur'){echo"selected";}?>>Alirajpur</option>
+                         </select>
+                        
+                    </div>
                         <div class="col-md-6 col-lg-6 mb-3">
                          <div class="form-group">
                           <button class="btn btn-primary">Update</button>
-                        <a href="<?php echo base_url().'index.php/user/index';?>" class="btn-secondary btn">Cancle</a>
+                        <a href="<?php echo base_url().'index.php/Crudcontroller/index';?>" class="btn-secondary btn">Cancle</a>
                      </div>
                    </div>
                 </div>
