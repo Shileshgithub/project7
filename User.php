@@ -10,7 +10,7 @@ class User extends CI_controller{
         $data = array();
         $data['users']= $users;
         $this->load->view('list',$data);
-
+        
     }
 
 
@@ -21,14 +21,19 @@ class User extends CI_controller{
         if($this->form_validation->run() == false){
             $this->load->view('create');
         }else{
+
+
+            $student_s = array();
             $formArray = array();
             $formArray['name'] = $this->input->post('name');
             $formArray['email'] = $this->input->post('email');
             $formArray['gender'] = $this->input->post('gender');
-            $formArray['city'] = $this->input->post('city');
-            $formArray['hobby'] = $this->input->post('hobby');
+            $student_s['city'] = $this->input->post('city');
+
+
+            $student_s['hobby'] = $this->input->post('hobby');
             
-            $this->User_model->create($formArray);
+            $this->User_model->create($formArray, $student_s);
             $this->session->set_flashdata('success','recoard added successfully');
             redirect(base_url().'index.php/user/index');
              }
