@@ -61,24 +61,44 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <input type="radio" name="city" value="indore"<?php if(!empty($user['city']) && $user['city'] == 'indore'){echo"checked";}?>>Indore
                         <?=form_error('city')?>
                         </div>
-                        <div class="col-md-6 col-lg-6 mb-3">
+
+                        <div class="col-md-6 col-lg-6 mb-3"> 
                         <select id="country" name="country" class="form-select inline">
-                            <option value="">Select country</option>
-                            <option value="">select</option>
+                            <option value="0">Select</option>                            
                             <option value="Ajaigarh" <?php if(!empty($user['country']) && $user['country'] == 'Ajaigarh'){echo"checked";}?>>Ajaigarh</option>
                             <option value="MalAkodiae" <?php if(!empty($user['country']) && $user['country'] == 'MalAkodiae'){echo"checked";}?>>MalAkodiae</option>
                             <option value="Alampur" <?php if(!empty($user['country']) && $user['country'] == 'Alampur'){echo"checked";}?>>Alampur</option>
                             <option value="Alirajpur" <?php if(!empty($user['country']) && $user['country'] == 'Alirajpur'){echo"checked";}?>>Alirajpur</option>
-                            <?=form_error('country')?>
+                           
                          </select>
+                         <?=form_error('country')?>
+                        </div>
 
-                    </div>
-                        <div class="form-group">
+                       <div>
+                            <select vlaue="category" name="category">
+                            <option value="0">Cost</option>
+                            <option value="gen"<?php if(!empty($user['category']) && $user['category'] == 'gen'){echo"checked";}?>>GEN</option>
+                            <option value="obc"<?php if(!empty($user['category']) && $user['category'] == 'obc'){echo"checked";}?>>OBC</option>
+                            <option value="st"<?php if(!empty($user['category']) && $user['category'] == 'st'){echo"checked";}?>>ST</option>
+                            <option value="sc"<?php if(!empty($user['category']) && $user['category'] == 'sc'){echo"checked";}?>>SC</option>
+                         </select>
+                         <?=form_error('category')?>
+                         </div>
+
+                        <div class="col-md-6 col-lg-6 mb-3">
+                               <tr>
+                                <td><label for="address">Address:</label></td>
+                                <td><textarea id="address" name="address" rows="5" cols="50"></textarea></td>
+                               </tr>
+                               <?=form_error('address')?>
+                        </div>
+                        
+                               <div class="form-group">
                         <button class="btn btn-primary">create</button>
                         <a href="<?php echo base_url().'index.php/Crudcontroller/index';?>"class="btn-secondary btn">Cancle</a>
                         </div>
                    </div>
-</form>
+              </form>
       </div>
   </body>
 </html>

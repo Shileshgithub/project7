@@ -35,6 +35,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <th>Hobby</th>
                     <th>City</th>
                     <th>Country</th>
+                    <th>Address</th>
+                    <th>Cost</th>
                     <th>Edit</th>
                     <th>Delete</th>
                     
@@ -65,6 +67,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   
                     <td><?=$user['city']?></td>
                     <td><?=$user['country']?></td>
+                    <td><?=$user['address']?></td>
+                    <td><?=$user['category']?></td>
                     
                     <td>
                         <a href="<?php echo base_url().'index.php/Crudcontroller/edit/'.$user['id']?>"class="btn btn-primary">Edit</a>
